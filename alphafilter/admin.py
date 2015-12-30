@@ -4,6 +4,12 @@ ALPHAFILTER_ADMIN_FIELDS and replaces it with a new admin class that
 subclasses both the original admin and one with an alphabet_filter attribute
 """
 
+try:
+	from django.db.models import get_model
+except ImportError:
+	from django.apps import apps
+	get_model = apps.get_model
+
 from django.db.models import get_model
 from django.contrib import admin
 from django.conf import settings
